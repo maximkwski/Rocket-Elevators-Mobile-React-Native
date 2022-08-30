@@ -1,11 +1,12 @@
-import React from 'react';
+import React from 'react'
+import { StyleSheet, Text, View, SafeAreaView, Image, Button, Alert} from 'react-native';
 
-function HomeScreen(props) {
-    return (
-        <div>
-            
-        </div>
-    );
+const HomeScreen = () => {
+  return (
+    <View>
+        <Text>Home Screen</Text>
+    </View>
+  )
 }
 
-export default HomeScreen;
+export default HomeScreen

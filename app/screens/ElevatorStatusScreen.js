@@ -1,11 +1,14 @@
-import React from 'react';
+import React from 'react'
+import { StyleSheet, Text, View, SafeAreaView, Image, Button, Alert} from 'react-native';
 
-function ElevatorStatusScreen(props) {
-    return (
-        <div>
-            
-        </div>
-    );
+const ElevatorStatusScreen = () => {
+  return (
+   <View>
+       <Text>Elevator Status</Text>
+   </View>
+  )
 }
 
-export default ElevatorStatusScreen;
+export default ElevatorStatusScreen
+
+
