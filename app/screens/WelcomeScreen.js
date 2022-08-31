@@ -1,11 +1,45 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TextInput, View, Image, Button, Alert, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+
 
 
 function WelcomeScreen(props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const navigation = useNavigation();
+
+
+
+    const handleLogin = async () => {
+        let currentEmail = email;
+        try {
+            const resp = await axios.get(`https://salty-woodland-19674.herokuapp.com/api/users/email/${currentEmail}`);
+            if (resp.status == 200)  {
+            console.log("res is :", resp);
+            console.log("current user is :", resp.data.email);
+            navigation.replace("Home");
+            } else {
+                Alert.alert("Incorrect email","Please enter vaild email address")
+            }
+            
+    
+        } catch (error) {
+            Alert.alert("Alert Title","My Alert Msg")
+            console.warn("Error:", error)
+        }
+    }
+
+    // const handleLogin = () => {
+
+
+    //      if (email, password) {
+    //         navigation.replace("Home");
+    //      }
+    // } 
 
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -13,6 +47,8 @@ function WelcomeScreen(props) {
         <Image style={styles.logo} source={require('../../assets/R2.png')}/>
         <View style={styles.inputContainer}>
             <TextInput 
+                autoCapitalize="none"
+                autoCorrect="false"
                 placeholder='Email'
                 value={email}
                 onChangeText = {text => setEmail(text)}
@@ -28,7 +64,7 @@ function WelcomeScreen(props) {
         </View>
         <View style={styles.buttonContainer}>
             <TouchableOpacity
-                onPress={ () => {}}
+                onPress={handleLogin}
                 style={styles.button}
             >
                 <Text style={styles.buttonText}>Login</Text>
