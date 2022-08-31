@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TextInput, View, Image, Button, Alert, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -19,8 +19,8 @@ function WelcomeScreen(props) {
         try {
             const resp = await axios.get(`https://salty-woodland-19674.herokuapp.com/api/users/email/${currentEmail}`);
             if (resp.status == 200)  {
-            console.log("res is :", resp);
-            console.log("current user is :", resp.data.email);
+            console.log("user data is :", resp.data);
+            console.log("current user email is :", resp.data.email);
             navigation.replace("Home");
             } else {
                 Alert.alert("Incorrect email","Please enter vaild email address")
@@ -28,18 +28,10 @@ function WelcomeScreen(props) {
             
     
         } catch (error) {
-            Alert.alert("Alert Title","My Alert Msg")
+
             console.warn("Error:", error)
         }
     }
-
-    // const handleLogin = () => {
-
-
-    //      if (email, password) {
-    //         navigation.replace("Home");
-    //      }
-    // } 
 
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
