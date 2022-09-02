@@ -4,12 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 
 
-// useEffect(() => {
-//   axios.get(`https://salty-woodland-19674.herokuapp.com/api/elevators/${itemId}/`)
-//   .then(response => setCurrentElevator(response.data));
-// }, []);
-// console.log("current elevator data: ", currentElevator);
-
 const ElevatorStatusScreen =  ({route, navigation}) => {
   const {itemId, itemStatus} = route.params;
   const [currentElevator, setCurrentElevator] = useState({id: itemId, elevator_status: itemStatus});
