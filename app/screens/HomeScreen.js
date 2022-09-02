@@ -36,23 +36,6 @@ const HomeScreen = () => {
         navigation.replace('Welcome')
    }
 
-//    const goToElevatorStatus = () => {
-//        navigation.replace('Elevator Status')
-//    }
-
-
-  const  goToElevatorStatus = async (elevatorsData) => {
-    try {
-      const jsonValue = JSON.stringify(elevatorsData)
-      await AsyncStorage.setItem('key', jsonValue)
-      console.log("Storage data :", jsonValue)
-    } catch (error) {
-        console.warn("My AsyncStorage Error:", error)
-    }
-  
-    console.log('Done.')
-  }
-
   return (
     <View style={styles.container}>
         <Text style={styles.titleText}>List of inactive elevators:</Text>
@@ -61,7 +44,7 @@ const HomeScreen = () => {
         keyExtractor={(item) => item.id}
         data={elevatorsData}
         renderItem={({item}) => (
-                <TouchableOpacity style={styles.item} onPress={goToElevatorStatus}>
+                <TouchableOpacity style={styles.item} onPress={() => {navigation.replace('ElevatorStatus', {itemId: item.id, itemStatus: item.elevator_status})}}>
                 <Text style={styles.itemText} >Elevator Id: {item.id}</Text>
                 <Text  style={styles.itemText}>Column Id: {item.column_id}</Text>
                 <Text  style={styles.itemText}>Serial number: {item.serial_number}</Text>
@@ -72,7 +55,7 @@ const HomeScreen = () => {
       />
          
         
-        <TouchableOpacity style={styles.button} onPress={{handleSignOut}}>
+        <TouchableOpacity style={styles.button} onPress={handleSignOut}>
             <Text style={styles.buttonText}>Sign Out</Text>
         </TouchableOpacity>
     </View>

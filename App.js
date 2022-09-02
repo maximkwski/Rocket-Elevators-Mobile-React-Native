@@ -13,7 +13,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen  name="Welcome" options={ {headerShown: false }} component={WelcomeScreen} />
         <Stack.Screen name="Home" options={ {headerShown: false }} component={HomeScreen} />
-        <Stack.Screen name="Elevator Status" options={ {headerShown: false }} component={ElevatorStatusScreen} />
+        <Stack.Screen name="ElevatorStatus" options={ {headerShown: false }} component={ElevatorStatusScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,10 +1,11 @@
 {
   "expo": {
-    "name": "rocket-elevators-mobile",
+    "name": "Rocket L",
     "slug": "rocket-elevators-mobile",
+    "description": "Rocket Elevators Moble App for maintenance crew to get easy access to elevator status",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/apple-touch-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
